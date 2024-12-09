@@ -36,3 +36,23 @@ console.log(parseInt("123.456"));   //  정수 형태만 변환
 console.log(parseFloat("123.456"));  //  실수 전체
 
 console.log(parseInt(Math.PI)); //  float -> int
+
+//  숫자로 변환할 수 없는 형태의 문자열을 반환하면 -> NaN 
+let v = parseInt("a12345");
+console.log(v, "->", typeof v);
+//  NaN가 포함된 연산의 결과는 -> NaN 
+console.log(v, "* 3", "=", v * 3);
+//  number 데이터가 NaN인지 확인하려면 isNaN 함수 
+console.log(v, "is NaN?", isNaN(v));
+
+console.log("=========== Infinity");
+console.log("1/0 =", 1/0);
+
+//  유한수(Finite) 확인 함수 (isFinite)
+ console.log("1/0 is Finite?", isFinite(1/0));
+ console.log("2024 is Finite?", isFinite(2024));
+ console.log("NaN is Finite?", isFinite(parseInt("abc")));
+
+//  Infinity와 수치형 데이터의 산술 연산 -> Infinity 
+let result = 1/0 + 2024;
+console.log(result, typeof result);
