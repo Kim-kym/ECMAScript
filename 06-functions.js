@@ -79,3 +79,11 @@ console.log(f2Arrow("홍길동"));
 
 console.log(sandbox(3, 4, (v1, v2) => v1 * v2)); // 한번 쓰고 버릴 함수이기 때문에 담아둘 필요 없이 즉석에서 처리한다
 console.log(sandbox(3, 4, (v1, v2) => v1 / v2));
+
+console.log(sandbox(3, 4, (v1, v2) => v1 + v2));
+console.log(sandbox(3, 4, (v1, v2) => v1 * v2 * v1));
+console.log(sandbox(5, 6, (v1, v2) => v1 / v2));
+const f3Arrow = name => "Hi, " + name; 
+console.log(f3Arrow("cat"));
+const f4Arrow = dic => "Which means you are not " + dic;
+console.log(f4Arrow("min"));
