@@ -10,17 +10,24 @@ console.log(v3, v3.length);
 //  생성 2. 리터럴로 생성 (추천)
 const v4 = [];  //  빈 배열
 const colors = ["red", "green", "blue", "yellow"];
+const a1 = [];
+const nickName = ["Gouki", "Aulus", "Bwanga"]
+console.log(nickName);
 
 //  타입 체크 
 console.log(typeof v4, typeof colors);
+console.log(typeof nickName);
 //  특정 객체가 Array인지 확인
 console.log(Array.isArray(v4), Array.isArray(colors));
+console.log(Array.isArray(nickName));
 
 //  기본 값으로 채우기 .fill
 const v5 = new Array(10).fill(1);
 console.log(v5);
 v5.fill("a");
 console.log(v5);
+const n1 = new Array(6).fill('e');
+console.log(n1);
 
 //  객체도 배열처럼 접근할 수 있음
 const person = {
@@ -29,23 +36,41 @@ const person = {
 };
 console.log(person['name'], person['age']);
 
+const character = {
+    name: "Bwanga",
+    age: 54,
+    work: "swordMaster"
+};
+console.log("이름:",character['name'], "나이",character['age'], "직업",character['work']);
+
 //  자바스크립트의 배열은 인덱스 범위를 엄격히 체크하지 않음
 const arr = [];
 console.log(arr, arr.length);
+const arr2 = [];
+console.log(arr2, arr2.length);
 //  인덱스 범위를 벗어난 배열의 접근 
 arr[10] = 2024;
 console.log(arr, arr.length);
+arr2[4] = 22;
+console.log(arr2, arr2.length);
 
 console.log("=========== Methods");
 //  배열 합치기 
 const veges = ["배추", "무", "쪽파"];
 const sources = ["소금", "고춧가루", "새우젓"];
+const manga = ["onepiece, naruto, bleach"];
+const manga2 = ["inuyasha"];
 
 const ingr = (veges.concat(sources));
 console.log(ingr);
+const plusmanga = (manga.concat(manga2));
+console.log(plusmanga);
+
 
 //  join: 특정 문자열 기준 합치기 
 console.log("김장 재료:", ingr.join(", "));
+console.log("Favorite list:", plusmanga.join());
+console.log("commit Favorite list:", plusmanga.join(", "));
 
 //  push, pop -> Stack 자료형처럼 사용 가능 
 let fruits = ["Apple", "Banana", "Orange", "Mango"];
@@ -98,7 +123,7 @@ console.log(fruits);
 
 // fruits.sort();  //  기본은 오름차순
 // console.log("sort:", fruits);
-/* fruits.sort((v1, c2) => {
+/* fruits.sort((v1, v2) => {
     //  역순 정렬
     //  0이면 순서가 같다 (변경 없음)
     //  0보다 작을 때 => v1이 앞으로 
@@ -109,6 +134,8 @@ console.log(fruits);
 });
 */
 /*  문자열 길이 순으로 정렬 */
+console.log("----------- sort.length");
+console.log("원본:", fruits);
 fruits.sort((v1, v2) => {
     return v1.length - v2.length;
 })
