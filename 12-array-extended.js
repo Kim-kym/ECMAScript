@@ -72,7 +72,15 @@ function testEverySome2() {
     console.log("원본 데이터:", data2);
 
     //  모든 객체의 age가 30세 초과하는지 검증 
-    let result2 = data2.every(obj => obj.age > 30);
+    let result2 = data2.every(obj => obj.age > 30); //  검증 로직 
+    
+    console.log("모든 인물의 나이가 25세 초과?", result2);
+
+    //  일부 객체의 age가 600세 초과하는지 검증 
+    result2 = data2.some(obj => {
+        return obj.age > 600;
+    });
+    console.log("일부 인물의 나이가 600세 초과?", result2);
 }
 // testEverySome2();
 
@@ -96,6 +104,27 @@ function testMap() {
 }
 // testMap();
 
+// 데이터 처리 파이프라인 연습 
+const numbersRe = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const sourceRe = [30, 49, 39, 20, 10, 50];
+
+function testMap2() {
+    //  map -> 배열 형태는 그대로, 배열 요소를 변형 
+    console.log("========= map");
+    console.log("원본 배열:", numbersRe);
+    //  numbers 배열의 모든 요소를 2배 
+    //  기존 방식의 구현 
+    let multiply2 = [];
+    for (let r = 0; r < numbersRe.length; r++) {
+        multiply2.push(numbersRe[r] * 2);
+    }
+    console.log("기존방식: *2", multiply2);
+    multiply2 = numbersRe.map(item => item * 2);
+    console.log("MAP: *2", multiply2);
+}
+testMap2();
+
+
 function testFilter() {
     console.log("======= filter");
     //  filter: 내부 요소는 그대로,
@@ -110,6 +139,21 @@ function testFilter() {
     );
 }
 // testFilter();
+
+function testFilter2() {
+    console.log("=========== filter 연습");
+    //  filter: 내부 요소는 그대로, 
+    //  조건 만족하는 요소만 뽑아서 새 배열 생성 
+
+    //  numbers2 배열에서 홀수만 필터링
+    let result2 = numbersRe.filter(item => item % 4 == 0)
+    console.log("원본 데이터", numbersRe);
+    console.log("홀수 데이터:", result2)
+    console.log("3의 배수",
+        numbersRe.filter(item => item % 5 == 0)
+    );
+}
+// testFilter2();
 
 function testReduce() {
     console.log("============ reduce");
