@@ -32,6 +32,48 @@
             &copy;Bit Academy
         </div>
     </body>
+    <script>    //  연습
+        function addItem(event) {
+            let itemInput = document.getElementById("item");
+            let item = itemInput.value.trim();
+
+            if (item.length > 0) {
+                let container = document.getElementById("list")
+                let itemNode = document.createElement("li");
+                itemNode.innerText = item;
+                let toolbar = document.createElement("div");
+                toolbar.style.display = "inline";
+                let delBtn = document.createElement("button");
+                delBtn.innerText = "삭제";
+                delBtn.style.cssFloat = "right";
+                toolbar.appendChild(delBtn);
+                itemNode.appendChild(toolbar);
+                container.appendChild(itemNode);
+
+                delBtn.addEventListener("click", event => {
+                    let removeItem = event.target.parentNode.parentNode;
+                    let parentNode = removeItem.parentNode;
+                    parentNode.removeChild(removeItem);
+                });
+                
+                itemInput.value = "";
+                itemInput.focus();
+            }
+        }
+        
+        window.addEventListener("load", event => {
+            let cartItems = document.querySelectorAll("list li");
+            console.log("items:", cartItems);
+            for (let i = 0; i < cartItems; i++) {
+                let item = cartItems[i];
+                let parent = item.parentNode;
+                parent.removeChild(item);
+            }
+
+            document.getElementById("btn-add")
+                .addEventListner("click", addItem);
+        })
+    </script>
     <script>
         function addItem(event) {
             //  input#item의 value를 확인 trim -> length > 0
