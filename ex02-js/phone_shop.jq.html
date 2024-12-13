@@ -55,7 +55,68 @@
         <input type="text" id="keyword" /><button id="btn-search">검색</button>
     </div>
 </body>
-<script>
+<script> // 연습
+    function testAttributeJQ() {
+        //  #main-image를 가져와서 
+        let obj = $("#main-image"); //  Collection 반한
+        console.log("#main-image:", obj);
+        //  모든 속성을 출력 
+        //  jQuery 포장된 객체에 접근 
+        console.log(obj[0].getAttributeNames());
+        //  title 속성을 접두어 "선택상품:" -> 다시 설정
+        let title = obj.attr("title");
+        obj.attr("title", "선택상품:" + title);
+        //  .sub-image -> title 속성 변경 
+        
+        let subs = $(".sub-image"); //  class sub-image 가져와서 Collection 반환 
+        //  Loop 수행 
+        for (let i = 0; i < subs.length; i++) {
+            //  console.log(`sub${i} -> ${subs[i]}`);
+            $(subs[i]).attr("title",
+                            "선택상품:" + $(subs[i]).attr("title"));
+        }
+    }
+    //  testAttributeJQ();
+
+    //  #main-image 클릭하면 이벤트 정보 콘솔에 출력 
+    $("#main-image").click(function(event) {
+        console.log(event); //  event 정보
+        alert(event.target.title);
+    })
+
+    //  페이지 초기화 
+    //  window의 load 이벤트와 동일, 페이지 초기화 작업 
+    $(document).ready(() => {
+        //  하단의 .sub-image들의 클릭 이벤트 부착 
+        let subs = $(".sub-image");
+        //  요소가 여러개여도 루프를 돌리지 않아도 된다. 
+        subs.on("click", (event) => {
+            //  이벤트 발생 객체에서 
+            let obj = $(event.target);  // 이벤트 발생 객체를 jquery로 포장
+            //  src 속성, title 속성을 -> main-image으로 이전 
+            let mainImage = $("#main-image");
+            mainImage.attr({
+                src: obj.attr("src"),
+                title: obj.attr("title")
+            });
+            //  src 속성, title 속성을 -> #product-info h2로 이전 
+            let h2 = $("#product-info h2");
+            h2.text(obj.attr("title")); 
+        });
+
+        //  input#keyword의 내용이 변하면 
+        //  -> button#btn-search의 value 속성으로 복사 
+        $("#keyword").on("keyup", event => {
+            let input = $(event.target);    //  이벤트 발생 객체 
+
+            let btn = $("btn-search");
+            btn.text(input.val() + ":검색");
+        });
+
+    });
+</script>
+
+<!-- <script>
     
     function testAttributeJQ() {
         //  #mian-image를 가져와서
@@ -115,6 +176,6 @@
         });
 
     });
-</script>
+</script> -->
 
 </html>
