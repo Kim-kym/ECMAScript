@@ -57,7 +57,21 @@
             */
            //   ES6
            //   - fetch : 통신 함수
-           //   - axios : 좀 더 고급 통신 기능을 활용하고 싶을 때 
+           //   - axios : 좀 더 고급 통신 기능을 활용하고 싶을 때
+          
+           /* 연습 
+           fetch("snippet.h")
+                .then(response => {
+                    console.log(response);
+                    return response.text(); //  응답 텍스트를 받아옴 
+                })
+                .then(data => {
+                    document.getElementById("info").innerHTML = data; 
+                })
+                .catch(error => {
+                    console.error("ERROR:", error);
+                });
+            */
            fetch("snippet.h")
                 .then(response => {
                     console.log(response);
@@ -70,6 +84,8 @@
                     console.error("ERROR:", error);
                 });
         });
+        
+        $("#btn")
 
         $("#btnCallMovies").on("click", event => {
             //  API 서버 접속, 영화 목록 받아오기 
