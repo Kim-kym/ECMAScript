@@ -68,14 +68,14 @@
             });
 
         document.getElementById("readLocalStorage")
-                .addEventListener("clcik", event => {
+                .addEventListener("click", event => {
             //  theme와 fontSize를 localStorage로 부터 읽어와서 
             //  #localStorageResult에 콘텐츠로 추가 
             const theme = localStorage.getItem("theme");
             const fontSize = localStorage.getItem("fontSize");
 
             if (theme && fontSize) {
-                //  데이터 읽어오가 
+                //  데이터 읽어오기
                 document.getElementById("localStorageResult")
                         .innerText = `READ: theme: ${theme}, ` +
                                     `fontSiZe: ${fontSize}`;
@@ -131,7 +131,7 @@
             }
         });
         
-        document.getElementsByTagName("deleteSessionStorage")
+        document.getElementById("deleteSessionStorage")
                 .addEventListener("click", event => {
             sessionStorage.clear(); //  비우기
             document.getElementById("sessionStorageResult")
